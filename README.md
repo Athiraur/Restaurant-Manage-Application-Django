@@ -28,6 +28,3 @@ Payment gateway, notifications, mobile app
 
 # Author
 Atira UR
-Author
-
-Your Name
