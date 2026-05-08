@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resort Registration</title>
+    
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+    <style>
+        .form-control {
+            border: 1px solid #ccc; /* Example: border color */
+            border-radius: 5px; /* Example: border radius */
+            padding: 10px; /* Example: padding */
+            font-size: 16px; /* Example: font size */
+        }
+        .form-group {
+            margin-bottom: 15px; /* Example: spacing between form groups */
+        }
+        .help-block {
+            color: red; /* Example: color for error messages */
+        }
+        button{
+            margin-left:30rem;
+            margin-top:3rem;
+        }
+        .fullscreen-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;  /* Ensures the image covers the entire area without distortion */
+            z-index: -1;  /* Puts the image behind any other content */
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Start header -->
+    <header class="top-navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="{% static 'images/logo.png' %}" alt="" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbars-rs-food">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'resort_reg' %}">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Resort Information</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                                <a class="dropdown-item" href="{% url 'resort_reg' %}">Resort Registration</a>
+                                <a class="dropdown-item" href="{% url 'resort_list' %}">Update/Delete Hotel</a>
+                                <a class="dropdown-item" href=" ">Room Registration</a>
+
+                                <a class="dropdown-item" href="stuff.html">Update/Delete Room</a>
+                            </div>
+                        </li>
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'user_list' %}">Manage Users</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'resort_reg' %}">Manage Booking</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="index.html">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <img src="{% static 'images/OIP(2).jpeg' %}" alt="Description of image" class="fullscreen-image">
+
+
+
+
+
+
+
+
+
+
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+    <!-- ALL JS FILES -->
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- ALL PLUGINS -->
+    <script src="{% static 'js/jquery.superslides.min.js' %}"></script>
+    <script src="{% static 'js/images-loded.min.js' %}"></script>
+    <script src="{% static 'js/isotope.min.js' %}"></script>
+    <script src="{% static 'js/baguetteBox.min.js' %}"></script>
+    <script src="{% static 'js/picker.js' %}"></script>
+    <script src="{% static 'js/picker.date.js' %}"></script>
+    <script src="{% static 'js/picker.time.js' %}"></script>
+    <script src="{% static 'js/legacy.js' %}"></script>
+    <script src="{% static 'js/form-validator.min.js' %}"></script>
+    <script src="{% static 'js/contact-form-script.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>

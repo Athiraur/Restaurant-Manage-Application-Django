@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Summary</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-4">Booking Summary for {{ room.room_type }} at {{ room.resort.name }}</h2>
+    
+        <div class="card mt-3">
+            <div class="card-body">
+                <p><strong>image:  <img src="{{ room.resort.image.url }}" class="mr-3" alt="{{ room.resort.name }}" style="width: 100px; height: auto;">
+                <p><strong>Room Type:</strong> {{ room.room_type }}</p>
+                <p><strong>Resort Name:</strong> {{ room.resort.name }}</p>
+                <p><strong>Locality:</strong> {{ room.resort.locality }}</p>
+                <p><strong>Price per Room:</strong> ${{ room.price }}</p>
+                <p><strong>Address:</strong> {{ room.resort.address }}</p>
+                <p><strong>Parking:</strong> {{ room.resort.parking }}</p>
+
+                <p><strong>Tv:</strong> {{ room.tv_number }}</p>
+                <p><strong>Wifi:</strong> {{ room.wifi_number }}</p>
+                <p><strong>Food:</strong> {{ room.food }}</p>
+                <p><strong>Email:</strong> {{ room.resort.email  }}</p>
+                <p><strong>Phone number:</strong> {{ room.resort.phone  }}</p>
+                <p><strong>Parking:</strong> {{ room.resort.parking  }}</p>
+
+            </div>
+        </div>
+    
+        <div class="card mt-3">
+            <div class="card-body">
+                <p><strong>Number of Rooms:</strong> {{ rooms }}</p>
+                <p><strong>Number of Adults:</strong> {{ adults }}</p>
+                <p><strong>Number of Children:</strong> {{ children }}</p>
+                <p><strong>From Date:</strong> {{ from_date|date:"b. d, Y" }}</p>
+                <p><strong>To Date:</strong> {{ to_date|date:"b. d, Y" }}</p>
+                <p><strong>Total Days:</strong> {{ total_days }}</p>
+                <p><strong>Total Amount:</strong> ${{ total_amount }}</p> <!-- Display total amount -->
+            </div>
+        </div>
+        <a href="{% url 'card_transaction' total_amount=total_amount %}">Proceed to Payment</a>
+    
+        
+    </div>
+</body>
+</html>

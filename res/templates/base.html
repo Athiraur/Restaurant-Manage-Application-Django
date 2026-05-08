@@ -1,0 +1,255 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+    <style>
+      
+        .form-group {
+            margin-bottom: 15px; /* Example: spacing between form groups */
+        }
+        .help-block {
+            color: red; /* Example: color for error messages */
+        }
+
+        /* Style for the form inputs and submit button */
+.btn-common {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.form-control {
+    color: #d0a772;
+	background-color: transparent;
+	background-image: none;
+	border-color: #cfa671;
+}
+.form-control:hover{
+	
+	background-color: #cfa671;
+	border-color: #cfa671;
+}
+
+/* Optional: Add styles for form group and error messages */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.help-block {
+    color: red;
+}
+label{
+    color: #cfa671;
+}
+
+
+       
+    </style>
+</head>
+<body>
+
+
+    <!-- Start header -->
+    <header class="top-navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="{% static 'images/logo.png' %}" alt="" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbars-rs-food">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'resort_reg'  %}">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Resort Information</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                                <a class="dropdown-item" href="{% url 'resort_reg'   %}">Resort Registration</a>
+                                <a class="dropdown-item" href="{% url 'resort_list' %}">Update/Delete Hotel</a>
+                                <a class="dropdown-item" href="{% url 'add_room' %}">Room Registration</a>
+
+                                <a class="dropdown-item" href="{% url 'room_list' %}">Update/Delete Room</a>
+                            </div>
+                        </li>
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'manage_users' %}">Manage Users</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'manage_booking' %}">Manage Booking</a></li>
+                       
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'front' %}">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- End header -->
+     {% block content %} {% endblock %}
+    
+    <!-- Start All Pages -->
+    <div class="all-page-title page-breadcrumb">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Resort Registration</h1>
+                </div>
+            </div>
+       
+    <!-- End All Pages -->
+
+    <!-- Start Reservation -->
+    <div class="reservation-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Display Messages -->
+                    {% if messages %}
+                        <div class="container">
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} text-center">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+    
+                    <div class="heading-title text-center">
+                        <!-- Optional heading title -->
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Form Row -->
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="contact-block">
+                        <!-- Form starts -->
+                        <form id="resortform" method="POST" enctype="multipart/form-data" action="{% url 'resort_reg' %}">
+                            {% csrf_token %}
+    
+                            <!-- Form Fields -->
+                            <div class="row">
+                                <!-- Left Side (Form Fields) -->
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="name">{{ form.name.label }}</label>
+                                            {{ form.name }}
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="email"  >{{ form.email.label }}</label>
+                                            {{ form.email }}
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="parking">{{ form.parking.label }}</label>
+                                            {{ form.parking }}
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="land_mark">{{ form.land_mark.label }}</label>
+                                            {{ form.land_mark }}
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- Right Side (Form Fields) -->
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="locality">{{ form.locality.label }}</label>
+                                            {{ form.locality }}
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="phone">{{ form.phone.label }}</label>
+                                            {{ form.phone }}
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="address">{{ form.address.label }}</label>
+                                            {{ form.address }}
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="image">{{ form.image.label }}</label>
+                                            {{ form.image }}
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- Submit Button -->
+                            <div class="col-md-12">
+                                <div class="submit-button text-center">
+                                    <button class="btn btn-common" id="submit" type="submit">SUBMIT</button>
+                                    <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- End Reservation -->
+
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+    <!-- ALL JS FILES -->
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- ALL PLUGINS -->
+    <script src="{% static 'js/jquery.superslides.min.js' %}"></script>
+    <script src="{% static 'js/images-loded.min.js' %}"></script>
+    <script src="{% static 'js/isotope.min.js' %}"></script>
+    <script src="{% static 'js/baguetteBox.min.js' %}"></script>
+    <script src="{% static 'js/picker.js' %}"></script>
+    <script src="{% static 'js/picker.date.js' %}"></script>
+    <script src="{% static 'js/picker.time.js' %}"></script>
+    <script src="{% static 'js/legacy.js' %}"></script>
+    <script src="{% static 'js/form-validator.min.js' %}"></script>
+    <script src="{% static 'js/contact-form-script.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>

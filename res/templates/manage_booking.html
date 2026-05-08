@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resort Registration</title>
+    
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .table {
+            background-color: #d0a772; /* Orange background for the table */
+            border-radius: 5px; /* Rounded corners for the table */
+        }
+        .table th, .table td {
+            text-align: center; /* Center align text */
+            padding: 10px; /* Padding inside cells */
+            color: white;
+        }
+        .btn-orange {
+            background-color: #FFA500; /* Orange background for buttons */
+            border: none; /* No border */
+            color: white; /* White text color */
+            padding: 5px 10px; /* Padding for buttons */
+            border-radius: 5px; /* Rounded corners for buttons */
+            cursor: pointer; /* Cursor change on hover */
+        }
+        .btn-orange:hover {
+            background-color: #FF8C00; /* Darker orange on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top-navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="{% static 'images/logo.png' %}" alt="" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbars-rs-food">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'resort_reg'  %}">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Resort Information</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                                <a class="dropdown-item" href="{% url 'resort_reg'   %}">Resort Registration</a>
+                                <a class="dropdown-item" href="{% url 'resort_list' %}">Update/Delete Hotel</a>
+                                <a class="dropdown-item" href="{% url 'add_room' %}">Room Registration</a>
+
+                                <a class="dropdown-item" href="{% url 'room_list' %}">Update/Delete Room</a>
+                            </div>
+                        </li>
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'manage_users' %}">Manage Users</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'manage_booking' %}">Manage Booking</a></li>
+                       
+                        <li class="nav-item active"><a class="nav-link" href="{% url 'front' %}">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="all-page-title page-breadcrumb">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Manage Bookigs</h1>
+                </div>
+            </div>
+
+        <!-- Table displaying booking details -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Resort Name</th>
+                    <th>Booked Username</th>
+                    <th>From Date</th>
+                    <th>To Date</th>
+                    <th>Rooms</th>
+                    <th>Adults</th>
+                    <th>Children</th>
+                    <th>Room Type</th>
+                    <th>Total Days</th>
+                    <th>Booked Amount</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through the bookings and display each one -->
+                {% for booking in bookings %}
+                    <tr>
+                        <td>
+                            <!-- Display resort image -->
+                            <img src="{{ booking.room.resort.image.url }}" alt="{{ booking.room.resort.name }}" style="width: 100px; height: 100px;">
+                        </td>
+                        <td>{{ booking.room.resort.name }}</td> <!-- Resort name -->
+                        <td>{{ booking.user.username }}</td> <!-- Booked user's username -->
+                        <td>{{ booking.from_date }}</td> <!-- From date -->
+                        <td>{{ booking.to_date }}</td> <!-- To date -->
+                        <td>{{ booking.rooms }}</td> <!-- Number of rooms -->
+                        <td>{{ booking.adults }}</td> <!-- Number of adults -->
+                        <td>{{ booking.children }}</td> <!-- Number of children -->
+                        <td>{{ booking.room.room_type }}</td> <!-- Room type -->
+                        <td>{{ booking.total_days }}</td> <!-- Total days -->
+                        <td>${{ booking.booked_amount }}</td> <!-- Booked amount -->
+                        <td>{{ booking.date_of_booking }}</td> <!-- Date of booking -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

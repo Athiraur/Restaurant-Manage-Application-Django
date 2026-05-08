@@ -1,0 +1,188 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} add resort   {% endblock %}
+
+{% block cotent %}    
+
+
+
+    <style>
+      
+        .form-group {
+            margin-bottom: 15px; /* Example: spacing between form groups */
+        }
+        .help-block {
+            color: red; /* Example: color for error messages */
+        }
+
+        /* Style for the form inputs and submit button */
+.btn-common {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.form-control {
+    color: #d0a772;
+	background-color: transparent;
+	background-image: none;
+	border-color: #cfa671;
+}
+.form-control:hover{
+	
+	background-color: #cfa671;
+	border-color: #cfa671;
+}
+
+/* Optional: Add styles for form group and error messages */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.help-block {
+    color: red;
+}
+
+
+
+       
+    </style>
+
+    <!-- End header -->
+    
+    <!-- Start All Pages -->
+    <div class="all-page-title page-breadcrumb">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Resort Registration</h1>
+                </div>
+            </div>
+       
+    <!-- End All Pages -->
+
+    <!-- Start Reservation -->
+    <div class="reservation-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Display Messages -->
+                    {% if messages %}
+                        <div class="container">
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} text-center">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+    
+                    <div class="heading-title text-center">
+                        <!-- Optional heading title -->
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Form Row -->
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="contact-block">
+                        <!-- Form starts -->
+                        <form id="resortform" method="POST" enctype="multipart/form-data" action="{% url 'resort_reg' %}">
+                            {% csrf_token %}
+    
+                            <!-- Form Fields -->
+                            <div class="row">
+                                <!-- Left Side (Form Fields) -->
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="name">{{ form.name.label }}</label>
+                                            {{ form.name }}
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="email"  >{{ form.email.label }}</label>
+                                            {{ form.email }}
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="parking">{{ form.parking.label }}</label>
+                                            {{ form.parking }}
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="land_mark">{{ form.land_mark.label }}</label>
+                                            {{ form.land_mark }}
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- Right Side (Form Fields) -->
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="locality">{{ form.locality.label }}</label>
+                                            {{ form.locality }}
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="phone">{{ form.phone.label }}</label>
+                                            {{ form.phone }}
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="address">{{ form.address.label }}</label>
+                                            {{ form.address }}
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="image">{{ form.image.label }}</label>
+                                            {{ form.image }}
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- Submit Button -->
+                            <div class="col-md-12">
+                                <div class="submit-button text-center">
+                                    <button class="btn btn-common" id="submit" type="submit">SUBMIT</button>
+                                    <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- End Reservation -->
+
+   {% endblock %}

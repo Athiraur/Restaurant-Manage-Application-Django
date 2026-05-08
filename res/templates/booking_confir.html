@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-4">Booking Summary</h2>
+
+        <div class="card mt-3">
+            <div class="card-body">
+                <p><strong>Room Name:</strong> {{ selected_room.name }}</p>  <!-- Display room name -->
+                <p><strong>Room Type:</strong> {{ room_type }}</p>
+                <p><strong>Number of Rooms:</strong> {{ rooms }}</p>
+                <p><strong>Number of Adults:</strong> {{ adults }}</p>
+                <p><strong>Number of Children:</strong> {{ children }}</p>
+                <p><strong>From Date:</strong> {{ from_date }}</p>
+                <p><strong>To Date:</strong> {{ to_date }}</p>
+                <p><strong>Total Days:</strong> {{ total_days }}</p>
+                <p><strong>Total Amount:</strong> ${{ total_amount }}</p> <!-- Display total amount -->
+            </div>
+        </div>
+
+        <!-- Confirm booking button: You can make this URL direct to the booking confirmation page or process -->
+        <a href="{% url 'finalize_booking' booking_id=booking.id %}" class="btn btn-success mt-4">Confirm Booking</a>
+       
+        <!-- Option to go back and make another booking -->
+        <a href="{% url 'check_avilable' %}" class="btn btn-primary mt-4">Make Another Booking</a>
+    </div>
+
+</body>
+</html>

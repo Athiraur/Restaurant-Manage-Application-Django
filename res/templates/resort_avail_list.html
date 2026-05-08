@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Room</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        .img-fluid{
+            width:100px;
+            height:100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-4">Book {{ room.room_type }} at {{ room.resort.name }}</h2>
+
+        <div class="card mt-3">
+            <div class="card-body">
+                <p><strong>Image:</strong></p>
+                <img src="{{ room.resort.image.url }}" alt="Room Image" class="img-fluid">
+
+                <p><strong>Price:</strong> ${{ room.price }}</p>
+                <p><strong>Locality:</strong> {{ room.resort.locality }}</p>
+                
+            </div>
+        </div>
+
+        
+        </div>
+       
+    </div>
+
+     
+
+      
+    </div>
+</body>
+</html>
+ 
