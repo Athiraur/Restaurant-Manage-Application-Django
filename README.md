@@ -27,4 +27,4 @@ Open: http://127.0.0.1:8000/
 Payment gateway, notifications, mobile app
 
 # Author
-Atira UR
+Athira UR
